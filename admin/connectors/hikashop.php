@@ -156,7 +156,8 @@ class IgoriHikashopConnector extends IgoriMainConnector
             ->select('p.`product_id`')
             ->from('`#__hikashop_product` AS p')
 //            ->where('p.`product_parent_id` = 0')
-            ->where('p.`product_published` = 1');
+            ->where('p.`product_published` = 1')
+            ->where('p.`product_quantity` != 0');
 
         if (count($this->allIncludeCategoriesIds)) {
             $query->leftJoin('#__hikashop_product_category as c ON c.product_id = p.product_id');
