@@ -372,7 +372,7 @@ class IgoriHikashopConnector extends IgoriMainConnector
 
                 // Описание товара надо обрезать до 2985 символов
                 // (разрешено 3000 символов, но 15 из них оставляем под троеточие в конце и обрамляющий блок CDATA)
-                $offer->description = rtrim(mb_strimwidth($description, 0, 2985)) . "...";
+                $offer->description = strip_tags(rtrim(mb_strimwidth($description, 0, 2900))) . "...";
 
                 // Количество товара в точках продаж (outlets)
                 // (чёта сложновато, решил пока не делать)
