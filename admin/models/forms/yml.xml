@@ -558,6 +558,19 @@
                 <option value="0">COM_YANDEXMARKET_OFFERS_AVAILABLE_OPT_TO_ORDER</option>
             </field>
 
+            <!-- Скрывать товары, если они сняты с публикации -->
+            <field
+                    name="publication"
+                    type="radio"
+                    required="true"
+                    label="COM_YANDEXMARKET_OFFERS_PUBLICATION"
+                    description="COM_YANDEXMARKET_OFFERS_PUBLICATION_DESC"
+                    class="btn-group btn-group-yesno"
+                    default="0">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+
             <!--Cтавка для карточки модели-->
             <field
                     name="cbid"
