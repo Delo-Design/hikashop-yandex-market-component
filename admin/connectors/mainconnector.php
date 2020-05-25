@@ -29,6 +29,7 @@ class IgoriMainConnector {
     protected $db;
     protected $query;
     protected $config;
+    protected $configYML;
     protected $item;
     protected $offerType;
     protected $offerTypeParams;
@@ -40,9 +41,20 @@ class IgoriMainConnector {
 
     public function __construct($data)
     {
+        $app = JFactory::getApplication();
         $this->db = JFactory::getDbo();
         $this->query = $this->db->getQuery(true);
         $this->config = JComponentHelper::getParams('com_yandexmarket');
+
+        $query = $this->db->getQuery(true)
+            ->select('*')
+            ->from('#__yandexmarket_ymls')
+            ->where('id = ' . $this->db->quote((int)$app->input->get('ymlid')));
+        $yml = $this->db->setQuery($query)->loadObject();
+
+        // Конвертируем поле параметров в регистр.
+        $params = new JRegistry;
+        $this->configYML = $params->loadString($yml->params);
 
         $this->excludeCategories = (isset($data['exclude_categories'])) ?  $data['exclude_categories'] : array();
         $this->includeCategories = (isset($data['include_categories'])) ? $data['include_categories'] : array();

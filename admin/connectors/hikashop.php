@@ -158,11 +158,11 @@ class IgoriHikashopConnector extends IgoriMainConnector
 //            ->where('p.`product_parent_id` = 0')
 
 
-        if((int)$this->config->get('onlyinstock', 1)) {
+        if((int)$this->configYML->get('onlyinstock', 1)) {
             $query->where('p.`product_quantity` != 0');
         }
 
-        if((int)$this->config->get('publication', 0)) {
+        if((int)$this->configYML->get('publication', 0)) {
             $query->where('p.`product_published` = 1');
         }
 
