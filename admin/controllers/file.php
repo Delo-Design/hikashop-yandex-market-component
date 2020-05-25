@@ -726,11 +726,16 @@ class YandexMarketControllerFile extends JControllerLegacy
                     // Штрихкод
                     switch ($itemParams['barcode-select']) {
                         case 'code':
-                            $offerElements['barcode'] = MyLibHelper::clearString($itemOffer->code);
+                            $barcode = MyLibHelper::clearString($itemOffer->code);
+                            if(!empty($barcode)) {
+                                $offerElements['barcode'] = $barcode;
+                            }
                             break;
                         case 'field':
-                            $offerElements['barcode'] =
-                                MyLibHelper::clearString($itemOffer->customFields[$itemParams['barcode-field-select']]['value']);
+                            $barcode = MyLibHelper::clearString($itemOffer->customFields[$itemParams['barcode-field-select']]['value']);
+                            if(!empty($barcode)) {
+                                $offerElements['barcode'] = $barcode;
+                            }
                             break;
                     }
 
