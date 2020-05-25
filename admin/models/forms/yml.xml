@@ -558,6 +558,19 @@
                 <option value="0">COM_YANDEXMARKET_OFFERS_AVAILABLE_OPT_TO_ORDER</option>
             </field>
 
+            <!-- Учитывать наличие или нет товара -->
+            <field
+                    name="onlyinstock"
+                    type="radio"
+                    required="true"
+                    label="COM_YANDEXMARKET_OFFERS_ONLYINSTOCK"
+                    description="COM_YANDEXMARKET_OFFERS_ONLYINSTOCK_DESC"
+                    class="btn-group btn-group-yesno"
+                    default="1">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+
             <!-- Скрывать товары, если они сняты с публикации -->
             <field
                     name="publication"

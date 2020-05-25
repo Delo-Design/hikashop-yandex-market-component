@@ -154,9 +154,13 @@ class IgoriHikashopConnector extends IgoriMainConnector
         $db = JFactory::getDbo();
         $query = $db->getQuery(true)
             ->select('p.`product_id`')
-            ->from('`#__hikashop_product` AS p')
+            ->from('`#__hikashop_product` AS p');
 //            ->where('p.`product_parent_id` = 0')
-            ->where('p.`product_quantity` != 0');
+
+
+        if((int)$this->config->get('onlyinstock', 1)) {
+            $query->where('p.`product_quantity` != 0');
+        }
 
         if((int)$this->config->get('publication', 0)) {
             $query->where('p.`product_published` = 1');
